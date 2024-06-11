@@ -5,7 +5,17 @@ import Navbar from './Navbar'
 const View = () => {
     const [data,changedata]=useState([])
     const fetchdata = ()=>{
-       axios.get().then().catch()
+       axios.get("http://localhost:8084/view").then(
+        (response)=>{
+            changedata(response.data)
+            console.log(data)
+        }
+       ).catch(
+        (error)=>{
+            console.log(error.message)
+            alert(error.message)
+        }
+       )
     }
     useEffect(()=>{fetchdata()},[])
   return (
